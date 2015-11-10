@@ -7,18 +7,10 @@ sizeScreen = get(0,'ScreenSize');
 sizeScreen = [sizeScreen(3:end),sizeScreen(3:end)];
 [win,winRect] = Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.2 .6 .8 .95]);
 
-xy = [10 (winRect(3)-10);10 10];
-Screen('DrawDots',win,xy,[10],[0 0 255],[0,0],[1]);
+dotsize = 50;
+xy = [dotsize (winRect(3)-dotsize);dotsize dotsize];
+Screen('DrawDots',win,xy,[dotsize],[0 0 255],[0,0],[1]);
 Screen('Flip',win);
-WaitSecs(5);
+WaitSecs(2);
 
-nFrames = 40;
-moveDown = (winRect(3)-10)/nFrames;
-moveSide = (winRect(4)-10)/nFrames;
-for i =1:nFrames
-xy = [(moveDown*i) (winRect(3)-(moveDown*i));(moveSide*i) (moveSide*i)];
-Screen('DrawDots',win,xy,[10],[0 0 255],[0,0],[1]);
-Screen('Flip',win);
-WaitSecs(.2);
-end
-sca;
+
