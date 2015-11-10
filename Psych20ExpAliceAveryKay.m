@@ -6,8 +6,9 @@
 
 sizeScreen = get(0,'ScreenSize');
 sizeScreen = [sizeScreen(3:end),sizeScreen(3:end)];
-[win,winRect] = Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.2 .6 .8 .95]);
+[win1 ,winRect1] = Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.2 .6 .8 .95]);
 
+DrawDotsFunc(200, win1, winRect1);
 
 
 
