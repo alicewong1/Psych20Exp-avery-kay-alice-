@@ -5,8 +5,10 @@ trialTimeout=2;
 
 % Initialize Screen/Results File
  Screen('Preference', 'VisualDebugLevel', 1);
+ sizeScreen=get(0,'ScreenSize');
+ sizeScreen=[sizeScreen(3:end),sizeScreen(3:end)];
  subjInitials = input('Subject''s initials: ','s'); 
- fprintf('Watch the balls in motion, press <1> if you see a collision of the two balls, or press ,<0> if it appears that the balls seem to pass through one another in a continuous stream');
+ fprintf('Watch the balls in motion, press <1> if you see a collision of the two balls, or press ,<0> if it appears that the balls seem to pass through one another in a continuous stream\n');
  input('Press <enter> to begin');
  outFilename = ['MotionBounceIllusionResults_' subjInitials];
  
@@ -25,7 +27,7 @@ trialTimeout=2;
     for typenum=randperm(5)
         fprintf('Watch the balls in motion, see if you can detect if the balls collide with one another, or if they pass through each other./n');
         input('Press <enter> to begin');
-        DrawDotsFunc(typenum);
+        DrawDotsFunc(typenum,win,Scrnsize);
         nowtime=fliptime;
         responseGiven=0;
         response=0;
