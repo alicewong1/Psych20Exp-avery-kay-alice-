@@ -21,7 +21,6 @@ AssertOpenGL;
  
  %DEBUG set up
  if (DEBUG) 
-    %PsychDebugWindowConfiguration(0);
     [win, winRect]=Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.2 .5 .8 .85]); 
  else
     [win, winRect]=Screen('OpenWindow',0,[255 255 255]);
