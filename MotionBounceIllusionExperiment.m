@@ -5,7 +5,6 @@ trialTimeout=5;
 nFrames=[50 100 150 200 250];
 totalResult=0;
 nTrial=0;
-AssertOpenGL;
 
 % Initialize Screen/Results File
  Screen('Preference', 'VisualDebugLevel', 1);
@@ -21,24 +20,26 @@ AssertOpenGL;
  
  %DEBUG set up
  if (DEBUG) 
-    [win, winRect]=Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.5 .5 .5 .5]); 
+    [win, winRect]=Screen('OpenWindow',0,[255 255 255], sizeScreen.*[.2 .6 .8 .95]);
  else
     [win, winRect]=Screen('OpenWindow',0,[255 255 255]);
  end
+ 
  if(~DEBUG), HideCursor;end
  for blocknumber=1:nBlocks
     for typenum=nFrames(randperm(5))
         dotsize = 20;
         xy = [dotsize (winRect(3)-dotsize);dotsize dotsize];
-        soundFileName= 'Ping - Sound Effect.mp3';
-        repetitions = 1;
-        InitializePsychSound;
-        [y, freq]=audioread(soundFileName);
-        soundData= y';
-        nChannels= size(soundData,1);
-        pahandle=PsychPortAudio('Open', [], [], 0, freq, nChannels);
-        pahandle=PsychPortAudio('Open', [], [], 0, [], nChannels);
-        PsychPortAudio('FillBuffer', pahandle, soundData);
+        %soundFileName= 'Ping - Sound Effect.mp3';
+        %repetitions = 1;
+        %InitializePsychSound;
+        %[y, freq]=audioread(soundFileName);
+        %soundData= y';
+        %nChannels= size(soundData,1);
+        
+        %pahandle=PsychPortAudio('Open', [], [], 0, freq, nChannels);
+        %pahandle=PsychPortAudio('Open', [], [], 0, [], nChannels);
+        %PsychPortAudio('FillBuffer', pahandle, soundData);
         lessFrames=15;
         Screen('DrawDots',win,xy,dotsize,[0 0 255],[0,0],1);
         Screen('Flip',win);
@@ -50,8 +51,10 @@ AssertOpenGL;
         for i =1:typenum
             xy = [(moveDown*i) (winRect(3)-(moveDown*i));(moveSide*i) (moveSide*i)];
             Screen('DrawDots',win,xy,dotsize,[0 0 255],[0,0],1);
-            if i==(nFrames/2 - lessFrames)
-                t0= PsychPortAudio('Start', pahandle, repetitions, 0, 1);
+            if i==(typenum/2 - lessFrames)
+                % t0= PsychPortAudio('Start', pahandle, repetitions, 0, 1);
+            AnotherToneGenerator(0.3);
+            
             end
             Screen('Flip',win);
             WaitSecs(0.001);
