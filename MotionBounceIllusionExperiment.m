@@ -21,7 +21,7 @@ AssertOpenGL;
  
  %DEBUG set up
  if (DEBUG) 
-    [win, winRect]=Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.2 .5 .8 .85]); 
+    [win, winRect]=Screen('OpenWindow',0,[255 255 255],sizeScreen.*[.5 .5 .5 .5]); 
  else
     [win, winRect]=Screen('OpenWindow',0,[255 255 255]);
  end
