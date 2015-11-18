@@ -1,5 +1,5 @@
-DEBUG= true;
-nBlocks=1;
+DEBUG= false;
+nBlocks=5;
 trialTimeout=5;
 nFrames=[100 200 300 400 500];
 totalResult=0;
